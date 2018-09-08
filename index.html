@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scroller</title>
+
+    <style>
+        * {
+            margin: 0;
+        }
+        nav {
+            display: flex;
+            padding: 20px;
+            height: 5vh;
+            position: fixed;
+            top: 2vh;
+            left: 0;
+            width: 100%;
+            line-height: 5vh;
+            background-color: white;
+        }
+
+        nav a {
+            flex-grow: 1;
+            font-family: arial,sans-serif;
+            font-size: 30px;
+            text-align: center;
+            color: black;
+            text-decoration: none;
+        }
+
+        a span {
+            display: inline-block;
+            transform: rotate(90deg);
+            color: lightcoral;
+            transition: .3s;
+        }
+
+        nav a:hover span {
+            display: inline-block;
+            transform: rotate(0);
+            text-decoration: underline;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            height: 80vh;
+        }
+
+        .s1 {
+            background-color: rgb(49, 138, 129);
+        }
+
+        .s2 {
+            background-color: rgb(27, 51, 27);
+        }
+
+        .s3 {
+            background-color: rgb(58, 20, 148);
+        }
+
+        .s4 {
+            background-color: rgb(9, 59, 20);
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 40px;
+            font-family: arial;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a class="me" href="#">About <span>Me</span></a>
+        <a class="portfolio" href="#">Portfolio</a>
+        <a class="offer" href="#">Offer</a>
+        <a class="contact" href="#">Contact Me</a>
+    </nav>
+
+    <section data-section="me" class="s1"></section>
+    <section data-section="portfolio" class="s2"></section>
+    <section data-section="offer" class="s3"></section>
+    <section data-section="contact" class="s4"></section>
+
+    <footer>
+        <p>Footer</p>
+    </footer>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script>
+        $("nav a").on("click", function() {
+            const scroller = "[data-section=" + $(this).attr("class")+"]";
+            $("body,html").animate({
+                scrollTop: $(scroller).offset().top
+            }, 700)
+        })
+    </script>
+</body>
+
+</html>
